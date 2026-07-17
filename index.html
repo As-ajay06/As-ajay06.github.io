@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajay Sahani - Portfolio</title>
+  <!-- Modern Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Background Video for Light Mode -->
+  <video id="light-mode-video" autoplay loop muted playsinline src="videos/bg-video.mp4"></video>
+  <!-- Background Video for Dark Mode -->
+  <video id="dark-mode-video" autoplay loop muted playsinline src="videos/night-video.mp4"></video>
+
+  <!-- WebGL Background Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">Ajay<span>.dev</span></div>
+    <ul class="nav-links">
+      <li><a href="#" data-link="home" class="active">Home</a></li>
+      <li><a href="#" data-link="projects">Projects</a></li>
+      <li><a href="#" data-link="blog">Blog</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Night Mode">
+      <i class="fas fa-moon dark-icon"></i>
+      <i class="fas fa-sun light-icon"></i>
+    </button>
+  </nav>
+
+  <!-- Main Content Container for SPA -->
+  <main id="app-container">
+
+    <!-- View: Home -->
+    <section id="view-home" class="view active-view">
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ajay Sahani</span></h1>
+          <h2 id="profile-title" class="hero-subtitle">Software Engineer</h2>
+          <p id="profile-about" class="hero-description">I build things for the web and explore AI.</p>
+
+          <div class="social-links" id="social-links-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <div class="mytag-container">
+            <h3 class="mytag-heading">
+              <span class="mytag-label">What I Do </span> <span class="skill-pill">Is less than what I
+                can</span>
+            </h3>
+            <div class="skills-container" id="skills-container">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View: Projects -->
+    <section id="view-projects" class="view">
+      <div class="page-header">
+        <h2>My <span class="gradient-text">Projects</span></h2>
+        <p>A collection of my recent work in Web Development and Machine Learning.</p>
+      </div>
+
+      <div class="projects-grid-container">
+        <h3>Web Development</h3>
+        <div class="projects-grid" id="web-projects-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <h3 class="mt-5">Machine Learning / AI</h3>
+        <div class="projects-grid" id="ml-projects-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- View: Blog -->
+    <section id="view-blog" class="view">
+      <div class="page-header">
+        <h2>Daily <span class="gradient-text">Blog</span></h2>
+        <p>My thoughts, learnings, and daily updates.</p>
+      </div>
+
+      <div class="blog-container" id="blog-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="current-year"></span> Ajay Sahani. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+      Profile Views: <span id="profile-views" style="font-weight: 600; color: var(--primary-color);">...</span>
+    </p>
+  </footer>
+
+  <!-- Load Data and Application Logic -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Three.js for WebGL Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="js/animation.js"></script>
+</body>
+
+</html>
