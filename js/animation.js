@@ -24,9 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- GROUPS ---
   const nightGroup = new THREE.Group();
-  const dayGroup = new THREE.Group();
+  const nightGroup = new THREE.Group();
   scene.add(nightGroup);
-  scene.add(dayGroup);
 
   // ==========================================
   // NIGHT MODE: MONSOON RAIN
@@ -100,65 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dummyObject = new THREE.Object3D();
   const clock = new THREE.Clock();
 
-  // ==========================================
-  // DAY MODE: ANIME CLOUDS
-  // ==========================================
-  function createCloudTexture() {
-    const cvs = document.createElement('canvas');
-    cvs.width = 256;
-    cvs.height = 256;
-    const ctx = cvs.getContext('2d');
-    const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.9)');
-    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.4)');
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 256, 256);
-    return new THREE.CanvasTexture(cvs);
-  }
 
-  const cloudTexture = createCloudTexture();
-  const cloudCount = 60;
-  const cloudGeo = new THREE.BufferGeometry();
-  const cloudPos = new Float32Array(cloudCount * 3);
-  const cloudColors = new Float32Array(cloudCount * 3);
-  const cloudSpeeds = new Float32Array(cloudCount);
-
-  const whiteColor = new THREE.Color(0xffffff);
-  const shadowColor = new THREE.Color(0xa78bfa); // Anime-style purple/blue shadow
-
-  for (let i = 0; i < cloudCount; i++) {
-    cloudPos[i * 3] = (Math.random() - 0.5) * 600; // X
-    cloudPos[i * 3 + 1] = Math.random() * 150 - 20;  // Y
-    cloudPos[i * 3 + 2] = (Math.random() - 0.5) * 300 - 100; // Z
-
-    // Tint lower clouds with more shadow
-    const heightFactor = (cloudPos[i * 3 + 1] + 20) / 150;
-    const mixColor = shadowColor.clone().lerp(whiteColor, Math.max(0, Math.min(1, heightFactor)));
-
-    cloudColors[i * 3] = mixColor.r;
-    cloudColors[i * 3 + 1] = mixColor.g;
-    cloudColors[i * 3 + 2] = mixColor.b;
-
-    cloudSpeeds[i] = 0.02 + Math.random() * 0.03;
-  }
-
-  cloudGeo.setAttribute('position', new THREE.BufferAttribute(cloudPos, 3));
-  cloudGeo.setAttribute('color', new THREE.BufferAttribute(cloudColors, 3));
-
-  const cloudMaterial = new THREE.PointsMaterial({
-    size: 150,
-    map: cloudTexture,
-    transparent: true,
-    opacity: 0.9,
-    vertexColors: true,
-    depthWrite: false,
-    blending: THREE.NormalBlending
-  });
-
-  const cloudMesh = new THREE.Points(cloudGeo, cloudMaterial);
-  dayGroup.add(cloudMesh);
 
   // Mouse interaction
   let mouseX = 0;
@@ -209,18 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fishGroup.quaternion.slerp(dummyObject.quaternion, 0.1);
     }
 
-    // Update Anime Clouds (Day Mode)
-    if (dayGroup.visible) {
-      const cPositions = cloudGeo.attributes.position.array;
-      for (let i = 0; i < cloudCount; i++) {
-        // Move clouds to the right + subtle wind
-        cPositions[i * 3] += cloudSpeeds[i] + (wind * 0.1);
-        if (cPositions[i * 3] > 300) {
-          cPositions[i * 3] = -300; // Reset to left
-        }
-      }
-      cloudGeo.attributes.position.needsUpdate = true;
-    }
+
 
     renderer.render(scene, camera);
     window.requestAnimationFrame(tick);
@@ -236,34 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   });
 
-  // Theme Switching Logic
-  const applyTheme = (theme) => {
-    const video = document.getElementById('light-mode-video');
-    if (theme === 'dark') {
-      const video = document.getElementById('dark-mode-video');
-      scene.fog.color.setHex(0x18181b);
-      nightGroup.visible = true;
-      dayGroup.visible = false;
-      if (video) video.pause();
-    } else {
-      // Hide WebGL clouds since the video is the background
-      scene.fog.color.setHex(0xe0f2fe);
-      nightGroup.visible = false;
-      dayGroup.visible = false;
-      if (video) video.play().catch(e => console.log('Video autoplay prevented'));
-    }
-  };
-
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.attributeName === 'data-theme') {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        applyTheme(currentTheme);
-      }
-    });
-  });
-  observer.observe(document.documentElement, { attributes: true });
-
-  const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
-  applyTheme(initialTheme);
+  scene.fog.color.setHex(0x18181b);
 });

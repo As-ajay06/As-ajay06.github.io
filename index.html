@@ -15,8 +15,7 @@
 </head>
 
 <body>
-  <!-- Background Video for Light Mode -->
-  <video id="light-mode-video" autoplay loop muted playsinline src="videos/bg-video.mp4"></video>
+
   <!-- Background Video for Dark Mode -->
   <video id="dark-mode-video" autoplay loop muted playsinline src="videos/night-video.mp4"></video>
 
@@ -31,10 +30,6 @@
       <li><a href="#" data-link="projects">Projects</a></li>
       <li><a href="#" data-link="blog">Blog</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Night Mode">
-      <i class="fas fa-moon dark-icon"></i>
-      <i class="fas fa-sun light-icon"></i>
-    </button>
   </nav>
 
   <!-- Main Content Container for SPA -->
@@ -45,7 +40,8 @@
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ajay Sahani</span></h1>
-          <h2 id="profile-title" class="hero-subtitle">Software Engineer <span class="gradient-text"> <- Not a Devloper -> </span></h2>
+          <h2 id="profile-title" class="hero-subtitle">Software Engineer <span class="gradient-text"> <- Not a Devloper
+                -> </span></h2>
           <p id="profile-about" class="hero-description">I build things for the web and explore AI.</p>
 
           <div class="social-links" id="social-links-container">
@@ -80,6 +76,13 @@
 
         <h3 class="mt-5">Machine Learning / AI</h3>
         <div class="projects-grid" id="ml-projects-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+      </br>
+      <div class="projects-grid-container">
+        <h3>Fullstack Templates</h3>
+        <div class="projects-grid" id="templates-projects-grid">
           <!-- Dynamically populated -->
         </div>
       </div>

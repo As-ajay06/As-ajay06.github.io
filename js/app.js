@@ -1,28 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Theme management : Light and Dark
-  const themeToggle = document.getElementById('themeToggle');
-  const htmlElement = document.documentElement;
-
-  // Check local storage or system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-  } else if (!systemPrefersDark) {
-    htmlElement.setAttribute('data-theme', 'light');
-  } // Default is dark in HTML
-
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-
-
   // SPA Routing Logic
   const navLinks = document.querySelectorAll('.nav-links a');
   const views = document.querySelectorAll('.view');
@@ -91,8 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render Web Projects
   const webProjectsGrid = document.getElementById('web-projects-grid');
-  if (webProjectsGrid && portfolioData.webProjects) {
-    webProjectsGrid.innerHTML = portfolioData.webProjects.map(project => `
+  console.log("hi there")
+  if (webProjectsGrid && portfolioData.fullStackProjects) {
+    webProjectsGrid.innerHTML = portfolioData.fullStackProjects.map(project => `
+      <div class="project-card">
+        <h4>${project.title}</h4>
+        <p>${project.description}</p>
+        <div class="project-tags">
+          ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+        </div>
+        <a href="${project.link}" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `).join('');
+  }
+
+  const templatesProjectsGrid = document.getElementById('templates-projects-grid');
+  if (templatesProjectsGrid && portfolioData.templatesYouCanUse) {
+    templatesProjectsGrid.innerHTML = portfolioData.templatesYouCanUse.map(project => `
       <div class="project-card">
         <h4>${project.title}</h4>
         <p>${project.description}</p>
@@ -106,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render ML Projects
   const mlProjectsGrid = document.getElementById('ml-projects-grid');
-  if (mlProjectsGrid && portfolioData.mlProjects) {
-    mlProjectsGrid.innerHTML = portfolioData.mlProjects.map(project => `
+  if (mlProjectsGrid && portfolioData.mlProjectsAsContributer) {
+    mlProjectsGrid.innerHTML = portfolioData.mlProjectsAsContributer.map(project => `
       <div class="project-card">
         <h4>${project.title}</h4>
         <p>${project.description}</p>
@@ -129,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <article class="blog-post">
         <span class="blog-date"><i class="far fa-calendar-alt"></i> ${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         <h3>${post.title}</h3>
-        <p>${post.content}</p>
+        <p>${post.link}</p>
       </article>
     `).join('');
   }

@@ -2,24 +2,6 @@
    CSS Design System (Tokens)
    ========================================================================== */
 :root {
-  /* Light Theme */
-  --surface-color: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --border-color: #e2e8f0;
-
-  --primary-gradient: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-  --primary-color: #94a3b8;
-  --hover-color: #64748b;
-
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.8);
-
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-[data-theme="dark"] {
   /* Dark Theme (Night Mode) - Zinc 600 - 800 */
   --surface-color: #18181b;
   --text-primary: #f4f4f5;
@@ -33,6 +15,7 @@
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
   --glass-bg: rgba(24, 24, 27, 0.6);
   --glass-border: rgba(255, 255, 255, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* glass css */
@@ -71,23 +54,6 @@ a {
   /* Let clicks pass through to UI */
 }
 
-#light-mode-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  /* Above body background, below WebGL canvas because canvas is later in HTML */
-  pointer-events: none;
-  display: none;
-}
-
-[data-theme="light"] #light-mode-video {
-  display: block;
-}
-
 #dark-mode-video {
   position: fixed;
   top: 0;
@@ -98,10 +64,6 @@ a {
   z-index: -1;
   /* Above body background, below WebGL canvas because canvas is later in HTML */
   pointer-events: none;
-  display: none;
-}
-
-[data-theme="dark"] #dark-mode-video {
   display: block;
 }
 
@@ -132,14 +94,6 @@ h4 {
   background-clip: text;
   color: transparent;
   display: inline-block;
-}
-
-[data-theme="light"] .gradient-text {
-  -webkit-text-stroke: 1px var(--text-primary);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-[data-theme="dark"] .gradient-text {
   -webkit-text-stroke: 1px var(--text-secondary);
 }
 
@@ -236,42 +190,7 @@ h4 {
   width: 100%;
 }
 
-.theme-toggle {
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: var(--transition);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-color);
-  box-shadow: var(--card-shadow);
-}
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-}
-
-[data-theme="dark"] .dark-icon {
-  display: none;
-}
-
-[data-theme="dark"] .light-icon {
-  display: block;
-}
-
-[data-theme="light"] .dark-icon {
-  display: block;
-}
-
-[data-theme="light"] .light-icon {
-  display: none;
-}
 
 /* ==========================================================================
      Main Container & Views (SPA Logic in CSS)

@@ -4,33 +4,106 @@ const portfolioData = {
     title: "Software Engineer & AI Enthusiast",
     about: "I am a passionate software developer constantly exploring new technologies. Here you'll find my web projects, machine learning research, and daily blog where I share my thoughts and learnings.",
     socialLinks: {
-      github: "https://github.com/ajaysahani",
-      twitter: "https://twitter.com/ajaysahani",
-      linkedin: "https://linkedin.com/in/ajaysahani",
+      github: "https://github.com/As-ajay06",
+      twitter: "https://twitter.com/ajax_wt",
+      linkedin: "https://www.linkedin.com/in/ajay-sahani-948a07253/",
       reddit: "https://reddit.com/user/ajaysahani",
       discord: "#"
     }
   },
   skills: [
-    "JavaScript", "HTML5", "CSS3", "Python", "Machine Learning", "Web Development"
+    "TypeScript", "JavaScript", "Python",
+    "React", "NextJS", "NodeJS", "ExpressJS",
+    "PostgreSQL", "MongoDB", "REST API",
+    "Docker", "AWS", "CI/CD", "Linux",
+    "Machine Learning", "Deep learning", "Embeddings",
+    "Tailwind", "HTML5", "CSS3",
+    "Git", "GitHub", "Monorepo",
+    "Docker-Compose", "Nginx", "Bash", "Bash Scripting",
+    "Jupyter Notebook", "Vim", "VScode",
+    "Web Development", "Open source contributor", "Blogger", "Medium"
   ],
-  webProjects: [
+
+  templatesYouCanUse: [
     {
-      id: "w1",
+      id: "t1",
+      title: "Nyaya Mitra",
+      description: " AI-Enhanced Legal Aid Platform for First-Generation Litigants.",
+      tags: ["Java", "Node", "React", "Next.js v20+",
+        "mongoDB v7"
+      ],
+      link: "https://project-legal-o8gx.vercel.app/"
+    },
+    {
+      id: "t2",
+      title: "Swap Skill",
+      description: " Peer-to-Peer (P2P) Skill Exchange for College Students.",
+      tags: ["Node", "React", "Next.js v20+",
+        "mongoDB v7"
+      ],
+      link: "https://swap-skill-web-dvdz.vercel.app/"
+    },
+    {
+      id: "t3",
+      title: "College CMS",
+      description: "API Backend for the Talawa Mobile App.",
+      tags: ["Node.js 20+", "Express.js 4",
+        "React", "Tailwindcss", "Express", "MongoDB v7"],
+      link: "https://github.com/As-ajay06/AITR-frontend"
+    },
+    {
+      id: "t4",
+      title: "Neural_OS",
+      description: "AI-native developer platform that orchestrates a swarm of specialized autonomous agents to handle the complete software development lifecycle.",
+      tags: ["Node.js 20+", "Express.js 4", "Sqlite3", "Google Gemini", "Websocket", "Node"
+        , "Typescript", "Vanilla CSS", "Three.js"
+      ],
+      link: "https://github.com/As-ajay06/Neural_os"
+    },
+
+  ],
+
+  fullStackProjects: [
+    {
+      id: "w2",
+      title: "Portfolio SPA",
+      description: "A single-page application portfolio built from scratch without any framework.",
+      tags: ["html", "css", "Javascript"],
+      link: "https://as-ajay06.github.io/"
+    },
+    {
+      id: "w3",
+      title: "Make some art",
+      description: "Wanna draw something cool and also record. Make some art is the right place for you.",
+      tags: ["NextJS", "React", "Fabric.js", "TailwindCss", "Typescript", "Node", "ReactDom"],
+      link: "https://makesomeart.vercel.app"
+    },
+    {
+      id: "w4",
+      title: "Kaamchahiye",
+      description: "A perfect online web application for those who are seeking job upload your profle and let the Selector know.",
+      tags: ["NextJS", "ExpressJS", "MongoDB", "Typescript", "Node", "ReactDom"],
+      link: "https://kaamchahiye.vercel.app"
+    },
+  ],
+
+  openSourceContributions: [
+    {
+      id: "o1",
       title: "contributing-to-talawa-api",
       description: "API Backend for the Talawa Mobile App.",
       tags: ["TypeScript", "API", "Backend"],
       link: "https://github.com/As-ajay06/contributing-to-talawa-api"
     },
     {
-      id: "w2",
-      title: "Portfolio SPA",
-      description: "A single-page application portfolio built from scratch without any framework.",
-      tags: ["Vanilla JS", "Design Systems"],
-      link: "#"
+      id: "o2",
+      title: "Wegtail/Guide",
+      description: "A website to teach Wagtail CMS to content editors, moderators and administrators",
+      tags: ["Python", "Javascript"],
+      link: "https://github.com/wagtail/guide"
     }
   ],
-  mlProjects: [
+  mlProjectsAsContributer: [
     {
       id: "m1",
       title: "gemma",
@@ -62,16 +135,10 @@ const portfolioData = {
   ],
   blogPosts: [
     {
-      id: "b2",
-      date: "2026-07-14",
-      title: "Building a Frameworkless SPA",
-      content: "Today I started building my portfolio as a Single Page Application using only HTML, CSS, and Vanilla JavaScript. It's refreshing to work without heavy frameworks and really understand how routing and DOM manipulation work under the hood. Added a nice dark mode toggle too!"
-    },
-    {
       id: "b1",
-      date: "2026-07-13",
-      title: "My Vision of Artificial Intelligence",
-      content: "AI is moving at a breakneck pace. My current research focuses on how we can make these models more accessible and resource-efficient. I believe the next big leap isn't just larger models, but smarter, smaller ones that can run anywhere."
-    }
+      date: "2026-07-14",
+      title: "Emergent behavior of LLMs",
+      link: "https://medium.com/@as2673447/emergent-abilities-in-large-language-models-4c955c4b9763?sharedUserId=as2673447"
+    },
   ]
 };
