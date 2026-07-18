@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Render Social Links
-  const socialContainer = document.getElementById('social-links-container');
-  if (socialContainer && portfolioData.profile.socialLinks) {
+  const socialContainers = document.querySelectorAll('.social-links-dynamic');
+  if (portfolioData.profile.socialLinks) {
     const links = portfolioData.profile.socialLinks;
     const iconsMap = {
       github: 'fab fa-github',
@@ -55,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         socialHTML += `<a href="${url}" target="_blank" aria-label="${platform}"><i class="${iconsMap[platform]}"></i></a>`;
       }
     }
-    socialContainer.innerHTML = socialHTML;
+    socialContainers.forEach(container => {
+      container.innerHTML = socialHTML;
+    });
   }
 
   // Render Skills
@@ -73,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     webProjectsGrid.innerHTML = portfolioData.fullStackProjects.map(project => `
       <div class="project-card">
         <h4>${project.title}</h4>
-        <p>${project.description}</p>
         <div class="project-tags">
-          ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+          ${project.tags.join(', ')}
         </div>
-        <a href="${project.link}" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+        <p>${project.description}</p>
+        <a href="${project.link}" target="_blank" class="project-link">[ View Project ]</a>
       </div>
     `).join('');
   }
@@ -87,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     templatesProjectsGrid.innerHTML = portfolioData.templatesYouCanUse.map(project => `
       <div class="project-card">
         <h4>${project.title}</h4>
-        <p>${project.description}</p>
         <div class="project-tags">
-          ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+          ${project.tags.join(', ')}
         </div>
-        <a href="${project.link}" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+        <p>${project.description}</p>
+        <a href="${project.link}" target="_blank" class="project-link">[ View Project ]</a>
       </div>
     `).join('');
   }
@@ -102,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mlProjectsGrid.innerHTML = portfolioData.mlProjectsAsContributer.map(project => `
       <div class="project-card">
         <h4>${project.title}</h4>
-        <p>${project.description}</p>
         <div class="project-tags">
-          ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+          ${project.tags.join(', ')}
         </div>
-        <a href="${project.link}" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+        <p>${project.description}</p>
+        <a href="${project.link}" target="_blank" class="project-link">[ View Project ]</a>
       </div>
     `).join('');
   }
@@ -119,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     blogContainer.innerHTML = sortedBlogs.map(post => `
       <article class="blog-post">
-        <span class="blog-date"><i class="far fa-calendar-alt"></i> ${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <span class="blog-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         <h3>${post.title}</h3>
-        <p>${post.link}</p>
+        <p><a href="${post.link}" target="_blank" class="project-link">[ Read Post ]</a></p>
       </article>
     `).join('');
   }
