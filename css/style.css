@@ -79,6 +79,7 @@ h1::before, h2::before, h3::before, h4::before {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed var(--text-secondary);
+  position: relative;
 }
 
 .nav-brand {
@@ -92,6 +93,38 @@ h1::before, h2::before, h3::before, h4::before {
 .nav-links {
   display: flex;
   gap: 1.5rem;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--accent-color);
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed var(--text-secondary);
+    display: none;
+    z-index: 100;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
 }
 
 .nav-links a.active {

@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // SPA Routing Logic
   const navLinks = document.querySelectorAll('.nav-links a');
   const views = document.querySelectorAll('.view');
+  const navLinksContainer = document.getElementById('nav-links');
+  const hamburger = document.getElementById('hamburger');
+
+  // Mobile Menu Toggle
+  if (hamburger && navLinksContainer) {
+    hamburger.addEventListener('click', () => {
+      navLinksContainer.classList.toggle('show');
+    });
+  }
 
   function navigateTo(viewId) {
     // Update active nav link
@@ -33,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const viewId = link.getAttribute('data-link');
       navigateTo(viewId);
+      // Close mobile menu on link click
+      if (navLinksContainer) {
+        navLinksContainer.classList.remove('show');
+      }
     });
   });
 
