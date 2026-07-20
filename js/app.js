@@ -111,6 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
+  const opensourceProjectsGrid = document.getElementById('opensource-projects-grid');
+  if (opensourceProjectsGrid && portfolioData.openSourceContributions) {
+    opensourceProjectsGrid.innerHTML = portfolioData.openSourceContributions.map(project => `
+      <div class="project-card">
+        <h4>${project.title}</h4>
+        <div class="project-tags">
+          ${project.tags.join(', ')}
+        </div>
+        <p>${project.description}</p>
+        <a href="${project.link}" target="_blank" class="project-link">[ View Project ]</a>
+      </div>
+    `).join('');
+  }
+
   // Render ML Projects
   const mlProjectsGrid = document.getElementById('ml-projects-grid');
   if (mlProjectsGrid && portfolioData.mlProjectsAsContributer) {
@@ -136,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <article class="blog-post">
         <span class="blog-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         <h3>${post.title}</h3>
+        <h3>${post.content}</h3>
         <p><a href="${post.link}" target="_blank" class="project-link">[ Read Post ]</a></p>
       </article>
     `).join('');

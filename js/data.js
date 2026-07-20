@@ -138,7 +138,15 @@ const portfolioData = {
       id: "b1",
       date: "2026-07-14",
       title: "Emergent behavior of LLMs",
-      link: "https://medium.com/@as2673447/emergent-abilities-in-large-language-models-4c955c4b9763?sharedUserId=as2673447"
+      content: "The behavior of LLMs on data they are not trained on. This article is all about that.",
+      link: "https://medium.com/@as2673447/emergent-abilities-in-large-language-models-4c955c4b9763?seekingharedUserId=as2673447"
+    },
+    {
+      id: "b2",
+      date: "2026-07-19",
+      title: "What is the difference between LLms and AI",
+      content: "People who are new to AI , always gets confused about LLMs and AI",
+      link: "https://medium.com/@as2673447/what-is-the-difference-between-llms-and-ai-88c64118b6ff?sharedUserId=as2673447"
     },
   ]
 };
